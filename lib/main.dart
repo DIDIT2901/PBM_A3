@@ -34,9 +34,9 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               Container(
                 margin: const EdgeInsets.only(top: 100),
-                child: Text(
-                  "Halo! Selibu Disini",
-                ),
+                child: Text("Halo! Selibu Disini!",
+                    style:
+                        TextStyle(fontSize: 32, fontWeight: FontWeight.w900)),
               ),
               Text("Kenalan Dulu Yuk Sama Aplikasi Selibu!")
             ],
@@ -52,11 +52,13 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: <Widget>[
               Container(
+                margin: EdgeInsets.all(32),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  "Jadi, di aplikasi Selibu ini, Kamu Bisa Menyewa dan Membeli Buku loh! Baru Tau kan?",
-                ),
+                    "Jadi, di aplikasi Selibu ini, Kamu Bisa Menyewa dan Membeli Buku loh! Baru Tau kan?",
+                    textAlign: TextAlign.center),
               ),
-              Text("Temukan Buku Favoritmu Di Aplikasi Selibu")
+              Text("Temukan Buku Favoritmu Di Aplikasi Selibu"),
             ],
           ),
         ),
