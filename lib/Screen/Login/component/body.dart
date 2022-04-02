@@ -3,6 +3,7 @@ import 'package:selibu/Screen/Login/component/background.dart';
 import 'package:selibu/Screen/Login/component/input_email.dart';
 import 'package:selibu/Screen/Login/component/input_password.dart';
 import 'package:selibu/Screen/Login/component/text_field.dart';
+import 'package:selibu/components/rounded_button.dart';
 import 'package:selibu/constants.dart';
 
 class Body extends StatelessWidget {
@@ -38,6 +39,22 @@ class Body extends StatelessWidget {
           ),
           input_password(
             onChanged: (value) {},
+          ),
+          RoundedButton(
+            text: "LOGIN",
+            press: () {},
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Text(
+              "Belum Punya Akun?",
+              style: TextStyle(
+                color: Color(0xFF838383),
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+                decoration: TextDecoration.underline
+              ),
+            ),
           )
         ],
       ),
