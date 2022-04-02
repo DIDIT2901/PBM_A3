@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
               onChanged: (value) {},
             ),
             RoundedButton(
-              text: "KUY DAFTAR",
+              text: "KUY DAFTAR =>",
               press: () {},
             ),
             SizedBox(height: size.height * 0.03),
