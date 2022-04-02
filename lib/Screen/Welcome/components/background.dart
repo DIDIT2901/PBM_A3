@@ -32,10 +32,7 @@ class Background extends StatelessWidget {
               width: size.width * 1,
             ),
           ),
-          Image.asset(
-            "assets/images/Buku.png",
-            height: size.height * 0.25,
-          ),
+          child,
         ],
       ),
     );

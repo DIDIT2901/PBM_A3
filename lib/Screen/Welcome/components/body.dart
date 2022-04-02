@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Welcome/components/background.dart';
+import 'package:selibu/constants.dart';
+import 'package:selibu/components/rounded_button.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -10,8 +12,27 @@ class Body extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Halo! Selibu Disini!",
-            style: TextStyle(color: Colors.black),
+            "Selibu Disini!",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          ),
+          SizedBox(height: size.height * 0.03),
+          Text(
+            "Kenalan dulu yuk, sama aplikasi selibu",
+            style: TextStyle(fontSize: 23),
+          ),
+          SizedBox(height: size.height * 0.03),
+          Image.asset(
+            "assets/images/Buku.png",
+            height: size.height * 0.25,
+          ),
+          SizedBox(height: size.height * 0.03),
+          Text(
+            "Jadi, di aplikasi Selibu ini, kamu bisa menyewa dan membeli buku loh! Baru tau kan?",
+            style: TextStyle(fontSize: 16),
+          ),
+          RoundedButton(
+            text: "Lanjut Login",
+            press: () {},
           ),
         ],
       ),
