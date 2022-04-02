@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Welcome/components/background.dart';
 import 'package:selibu/constants.dart';
 import 'package:selibu/components/rounded_button.dart';
+import 'package:selibu/Screen/Login/Login.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -32,7 +33,16 @@ class Body extends StatelessWidget {
           ),
           RoundedButton(
             text: "Lanjut Login",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginScreen();
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),
