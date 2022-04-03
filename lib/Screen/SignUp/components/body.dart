@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:selibu/Screens/Login/login.dart';
+import 'package:selibu/Screen/Login/login.dart';
 //import 'package:selibu/Screens/Signup/components/or_divider.dart';
 //import 'package:selibu/Screens/Signup/components/social_icon.dart';
 import 'package:selibu/components/punya_akuncek.dart';
-import 'package:selibu/Screen/Signup/components/background.dart';
+import 'package:selibu/Screen/SignUp/components/background.dart';
 import 'package:selibu/Screen/Login/component/input_email.dart';
 import 'package:selibu/Screen/Login/component/input_password.dart';
 import 'package:selibu/Screen/Login/component/text_field.dart';
