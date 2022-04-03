@@ -1,73 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Login/login_screen.dart';
-import 'package:flutter_auth/Screens/Signup/components/background.dart';
-import 'package:flutter_auth/Screens/Signup/components/or_divider.dart';
-import 'package:flutter_auth/Screens/Signup/components/social_icon.dart';
-import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
-import 'package:flutter_auth/components/rounded_button.dart';
-import 'package:flutter_auth/components/rounded_input_field.dart';
-import 'package:flutter_auth/components/rounded_password_field.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:selibu/Screens/Login/login.dart';
+//import 'package:selibu/Screens/Signup/components/or_divider.dart';
+//import 'package:selibu/Screens/Signup/components/social_icon.dart';
+// import 'package:selibu/components/punya_akun.dart';
+import 'package:selibu/Screen/Signup/components/background.dart';
+import 'package:selibu/Screen/Login/component/input_email.dart';
+import 'package:selibu/Screen/Login/component/input_password.dart';
+import 'package:selibu/Screen/Login/component/text_field.dart';
+import 'package:selibu/components/rounded_button.dart';
+import 'package:selibu/constants.dart';
 
 class Body extends StatelessWidget {
+  const Body({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Background(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Selamat Datang Di SELIBU",
-              style: TextStyle(fontWeight: FontWeight.bold),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            "Selamat Datang Di Selibu",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+          Text(
+            "Yuk, Bikin Akunmu Sendiri!",
+            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 24),
+          ),
+          InputEmail(
+            hintText: "Email",
+            onchanged: (value) {},
+          ),
+          input_password(
+            onChanged: (value) {},
+          ),
+          RoundedButton(
+            text: "Kuy Daftar",
+            press: () {},
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Text(
+              "Sudah Punya Akun?",
+              style: TextStyle(
+                  color: Color(0xFF838383),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  decoration: TextDecoration.underline),
             ),
-            SizedBox(height: size.height * 0.03),
-            RoundedInputField(
-              hintText: "Your Email",
-              onChanged: (value) {},
-            ),
-            RoundedPasswordField(
-              onChanged: (value) {},
-            ),
-            RoundedButton(
-              text: "KUY DAFTAR =>",
-              press: () {},
-            ),
-            SizedBox(height: size.height * 0.03),
-            AlreadyHaveAnAccountCheck(
-              login: false,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            OrDivider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SocalIcon(
-                  iconSrc: "assets/icons/facebook.svg",
-                  press: () {},
-                ),
-                SocalIcon(
-                  iconSrc: "assets/icons/twitter.svg",
-                  press: () {},
-                ),
-                SocalIcon(
-                  iconSrc: "assets/icons/google-plus.svg",
-                  press: () {},
-                ),
-              ],
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
