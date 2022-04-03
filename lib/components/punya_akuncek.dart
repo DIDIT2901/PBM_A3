@@ -3,11 +3,11 @@ import 'package:selibu/constants.dart';
 
 class punyaakuncek extends StatelessWidget {
   final bool login;
-  final Function press;
+  final VoidCallback press;
   const punyaakuncek({
-    Key key,
+    Key? key,
     this.login = true,
-    this.press,
+    required this.press,
   }) : super(key: key);
 
   @override

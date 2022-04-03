@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/constants.dart';
+import 'package:selibu/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SocalIcon extends StatelessWidget {
   final String iconSrc;
-  final Function press;
+  final VoidCallback press;
   const SocalIcon({
-    Key key,
-    this.iconSrc,
-    this.press,
+    Key? key,
+    required this.iconSrc,
+    required this.press,
   }) : super(key: key);
 
   @override
