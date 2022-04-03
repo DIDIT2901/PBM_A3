@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selibu/Screens/Login/login.dart';
 //import 'package:selibu/Screens/Signup/components/or_divider.dart';
 //import 'package:selibu/Screens/Signup/components/social_icon.dart';
-// import 'package:selibu/components/punya_akun.dart';
+import 'package:selibu/components/punya_akuncek.dart';
 import 'package:selibu/Screen/Signup/components/background.dart';
 import 'package:selibu/Screen/Login/component/input_email.dart';
 import 'package:selibu/Screen/Login/component/input_password.dart';
@@ -41,17 +41,19 @@ class Body extends StatelessWidget {
             text: "Kuy Daftar",
             press: () {},
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Text(
-              "Sudah Punya Akun?",
-              style: TextStyle(
-                  color: Color(0xFF838383),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                  decoration: TextDecoration.underline),
-            ),
-          )
+          punyaakuncek(
+            login: false,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return login();
+                  },
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
