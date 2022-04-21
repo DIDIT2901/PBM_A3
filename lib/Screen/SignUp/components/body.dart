@@ -39,9 +39,8 @@ class Body extends StatelessWidget {
             text: "Kuy Daftar",
             press: () {},
           ),
-          punyaakuncek(
-            login: false,
-            press: () {
+          GestureDetector(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -51,7 +50,16 @@ class Body extends StatelessWidget {
                 ),
               );
             },
-          ),
+            child: Text(
+              "Udah Punya Akun?",
+              style: TextStyle(
+                color: Color(0xFF838383),
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+                decoration: TextDecoration.underline
+              ),
+            ),
+          )
         ],
       ),
     );
