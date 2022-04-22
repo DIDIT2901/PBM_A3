@@ -14,12 +14,18 @@ class Body extends StatelessWidget {
         children: <Widget>[
           Text(
             "Selibu Disini!",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+            style: TextStyle(
+                fontFamily: "Made-Tommy",
+                fontWeight: FontWeight.w700,
+                fontSize: 32),
           ),
           SizedBox(height: size.height * 0.03),
           Text(
             "Kenalan dulu yuk, sama aplikasi selibu",
-            style: TextStyle(fontSize: 23),
+            style: TextStyle(
+                fontFamily: "Made-Tommy",
+                fontWeight: FontWeight.w400,
+                fontSize: 23),
           ),
           SizedBox(height: size.height * 0.03),
           Image.asset(
@@ -28,8 +34,12 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: size.height * 0.03),
           Text(
-            "Jadi, di aplikasi Selibu ini, kamu bisa menyewa dan membeli buku loh! Baru tau kan?",
-            style: TextStyle(fontSize: 16),
+            "Jadi, di aplikasi Selibu ini, kamu bisa menyewa dan membeli buku loh! Yuk cari tau sekarang mengenai aplikasi Selibu",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: "Made-Tommy",
+                fontWeight: FontWeight.w400,
+                fontSize: 16),
           ),
           RoundedButton(
             text: "Lanjut Login",
