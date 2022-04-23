@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:selibu/Screen/Welcome/welcome_screen.dart';
+import 'package:selibu/Screen/Welcome/welcome_screen.dart';
+import 'package:selibu/Screen/Welcome/welcome_screen.dart';
 import 'package:selibu/constants.dart';
-import 'package:selibu/Screen/BeliBuku/beli_buku.dart';
+// import 'package:selibu/Screen/BeliBuku/beli_buku.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: BeliBuku(),
+      home: WelcomeScreen(),
     );
   }
 }

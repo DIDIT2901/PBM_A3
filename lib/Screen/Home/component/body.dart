@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
+import 'package:selibu/components/rounded_button.dart';
 
 // class Body extends StatelessWidget {
 //   const Body({
@@ -50,10 +53,10 @@ class _BodyState extends State<Body> {
         ),
         body: Container(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-          child: Column(
+          child: ListView(
             // mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 "Halo, Kinoy!",
@@ -115,15 +118,115 @@ class _BodyState extends State<Body> {
                   fontSize: 20,
                 ),
               ),
-              // ListView.builder(
-              //   itemCount: bookList.length,
-              //   itemBuilder: (context, index) {
-              //     Books buku = bookList[index];
-              //     return Card(
-              //     );
-              //   }
-              // )
-              
+              Card(
+                child: Container(
+                  height: 150,
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Expanded(
+                            child: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6koevcEZnIoYkFYfR-OA69SsYQw7R3zKYIA&usqp=CAU"),
+                            flex: 2,
+                          ),
+                        )
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 5,
+                                child: ListTile(
+                                  title: Text(
+                                    "SagaraS",
+                                    style: TextStyle(
+                                      fontFamily: "Made-Tommy",
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 24
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    "Akhirnya. Siapa orang tua Ali dijawab di buku ini. Ali, bertahun-tahun, berusaha memecahkan misteri itu. Raib dan Seli tentu tidak akan...",
+                                    style: TextStyle(
+                                      fontFamily: "Made-Tommy",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ),
+                              // Text(
+                              //   "Rp.81.000",
+                              //   textAlign: TextAlign.justify,
+                              //   style: TextStyle(
+                              //     fontFamily: "Made-Tommy",
+                              //     fontWeight: FontWeight.w600,
+                              //     fontSize: 12
+                              //   ),
+                              // ),
+                              Container(
+                                padding: EdgeInsets.fromLTRB(0, 10, 20, 0),
+                                child: Expanded(
+                                  flex: 5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(10),
+                                        child: OutlinedButton(
+                                          child: Text(
+                                            "Sewa",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          style: OutlinedButton.styleFrom(
+                                            primary: Colors.black,
+                                            backgroundColor: Colors.white,
+                                            side: BorderSide(color: Colors.black, width: 3),
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                                            minimumSize: Size(20, 25)
+                                          ),
+                                          onPressed: () {},
+                                        ),
+                                      ),
+                                      OutlinedButton(
+                                        child: Text(
+                                          "Beli",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                        style: OutlinedButton.styleFrom(
+                                          primary: Colors.black,
+                                          backgroundColor: Colors.black,
+                                          side: BorderSide(color: Colors.black, width: 3),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                                          minimumSize: Size(40, 25)
+                                        ),
+                                        onPressed: () {},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                elevation: 8,
+                margin: EdgeInsets.all(10),
+              ),
             ],
           ),
         ),
