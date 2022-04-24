@@ -230,6 +230,40 @@ class _BodyState extends State<Body> {
             ],
           ),
         ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: <BottomNavigationBarItem>[
+        //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Beranda"),
+        //     BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: "Beli"),
+        //     // BottomNavigationBarItem(icon: Icon(Icons.shop), label: "Beli"),
+        //     // BottomNavigationBarItem(icon: Icon(Icons.more), label: "More"),
+        //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        //   ],
+        // ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag),
+              label: 'Pesanan',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.book),
+              label: 'Inbox',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Akun',
+            ),
+          ],
+          // currentIndex: ,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          showSelectedLabels: true,
+          // onTap: ,
+        )
       )
     );
   }
