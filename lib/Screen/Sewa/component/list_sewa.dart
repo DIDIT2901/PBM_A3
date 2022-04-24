@@ -1,37 +1,41 @@
-import 'package:flutter/material.dart';
-import 'package:selibu/constants.dart';
-import 'package:selibu/Screen/Sewa/component/body.dart';
+class Stores {
+  String nama;
+  String tempat;
+  String jarak;
+  String waktu;
+  String telepon;
+  String image;
 
-class _PageList extends StatefulWidget {
-  @override
-  _PageListState createState() => _PageListState();
+  Stores({
+    required this.nama,
+    required this.tempat,
+    required this.jarak,
+    required this.waktu,
+    required this.image,
+    required this.telepon,
+  });
 }
 
-class _PageListState extends State<_PageList> {
-  List<String> toko = [
-    "Cabang Sumbersari",
-    "Cabang Kaliwates",
-    "Cabang Patrang",
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[300],
-      child: ListView.builder(
-        itemCount: toko.length,
-        itemBuilder: (BuildContext context, int index) {
-          final number = index + 1;
-          final store = toko[index].toString();
-          return Card(
-            child: ListTile(
-              leading: Text(number.toString()),
-              title: Text(store),
-              trailing: Icon(Icons.check_box),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+List<Stores> storeList = [
+  Stores(
+      nama: "Cabang Sumbersari",
+      tempat: "Kec. Sumbersari Kota Jember",
+      jarak: "7 Km",
+      waktu: "08.00 - 16.00",
+      telepon: "0815 4876 4219",
+      image: "assets/Images/Cabang Sumbersari.jpeg"),
+  Stores(
+      nama: "Cabang Kaliwates",
+      tempat: "Kec. Kaliwates Kab. Jember",
+      jarak: "12 Km",
+      waktu: "13.00 - 21.00",
+      telepon: "0854 3468 1549",
+      image: "assets/Images/Cabang Kaliwates.jpeg"),
+  Stores(
+      nama: "Cabang Patrang",
+      tempat: "Kec. Patrang Kota Jember",
+      jarak: "15 Km",
+      waktu: "08.00 - 18.00",
+      telepon: "0813 7529 1546",
+      image: "assets/Images/Cabang Patrang.jpeg"),
+];

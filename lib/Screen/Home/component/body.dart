@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
+import 'package:selibu/Screen/Sewa/sewa.dart';
 
 import '../../BeliBuku/beli_buku.dart';
 
@@ -165,7 +166,13 @@ class _BodyState extends State<Body> {
                                                               Radius.circular(
                                                                   30))),
                                                   minimumSize: Size(20, 25)),
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            SewaScreen()));
+                                              },
                                             ),
                                           ),
                                           OutlinedButton(
@@ -176,7 +183,8 @@ class _BodyState extends State<Body> {
                                                   color: Colors.white),
                                             ),
                                             style: OutlinedButton.styleFrom(
-                                                primary: Colors.black,
+                                                primary: Color.fromRGBO(
+                                                    252, 241, 241, 1),
                                                 backgroundColor: Colors.black,
                                                 side: BorderSide(
                                                     color: Colors.black,

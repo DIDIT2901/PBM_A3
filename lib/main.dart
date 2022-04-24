@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Welcome/welcome_screen.dart';
-import 'package:selibu/Screen/Welcome/welcome_screen.dart';
 import 'package:selibu/constants.dart';
 // import 'package:selibu/Screen/BeliBuku/beli_buku.dart';
 
