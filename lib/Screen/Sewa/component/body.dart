@@ -115,7 +115,7 @@ class _BodyState extends State<Body> {
                                     ]),
                                 child: Padding(
                                     padding:
-                                        EdgeInsets.fromLTRB(250, 10, 20, 0),
+                                        EdgeInsets.fromLTRB(180, 10, 20, 0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -185,8 +185,8 @@ class _BodyState extends State<Body> {
                                 bottom: 15,
                                 child: ClipRRect(
                                   child: Image(
-                                    width: 200,
-                                    height: 200,
+                                    width: 150,
+                                    height: 150,
                                     image: AssetImage(store.image),
                                   ),
                                 ),
