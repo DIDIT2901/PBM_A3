@@ -41,25 +41,17 @@ class Body extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return login();
-                  },
-                ),
-              );
+              Navigator.pop(context);
             },
             child: Text(
               "Udah Punya Akun?",
               style: TextStyle(
-                color: Color(0xFF838383),
-                fontWeight: FontWeight.bold,
-                fontSize: 12,
-                decoration: TextDecoration.underline
-              ),
+                  color: Color(0xFF838383),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  decoration: TextDecoration.underline),
             ),
-          )
+          ),
         ],
       ),
     );

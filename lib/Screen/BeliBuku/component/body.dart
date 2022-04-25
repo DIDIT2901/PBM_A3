@@ -214,8 +214,7 @@ class _BeliBuku extends State<Body> {
                           borderRadius: BorderRadius.all(Radius.circular(30))),
                       minimumSize: Size(40, 45)),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => NavBar()));
+                    Navigator.pop(context);
                   },
                 ),
               ],
