@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selibu/Data/Buku.dart';
 import 'package:selibu/Screen/BeliBuku/component/background.dart';
 import 'package:selibu/Screen/Home/home.dart';
+import 'package:selibu/Screen/Navbar.dart';
 import 'package:selibu/components/rounded_button.dart';
 
 class Body extends StatefulWidget {
@@ -214,7 +215,7 @@ class _BeliBuku extends State<Body> {
                       minimumSize: Size(40, 45)),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => NavBar()));
                   },
                 ),
               ],
