@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:selibu/Screen/EditProfile/EditProfile.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
+import 'package:selibu/Screen/Home/home.dart';
 import 'package:selibu/Screen/Sewa/sewa.dart';
 
 import '../../BeliBuku/beli_buku.dart';
@@ -22,18 +24,22 @@ class _BodyState extends State<Body> {
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Container(
           padding: EdgeInsets.fromLTRB(20, 00, 20, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                "Halo, Kinoy!",
-                style: TextStyle(
-                    fontFamily: "Made-Tommy",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 48),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                child: Text(
+                  "Halo, Kinoy!",
+                  style: TextStyle(
+                      fontFamily: "Made-Tommy",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 48),
+                ),
               ),
               Text(
                 "Mau Nyari Apa Nih Hari Ini?",
@@ -230,31 +236,6 @@ class _BodyState extends State<Body> {
               ),
             ],
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag),
-              label: 'Pesanan',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'Inbox',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Akun',
-            ),
-          ],
-          // currentIndex: ,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: true,
-          // onTap: ,
         ),
       ),
     );

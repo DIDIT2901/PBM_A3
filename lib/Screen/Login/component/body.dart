@@ -4,6 +4,7 @@ import 'package:selibu/Screen/Login/component/background.dart';
 import 'package:selibu/Screen/Login/component/input_email.dart';
 import 'package:selibu/Screen/Login/component/input_password.dart';
 import 'package:selibu/Screen/Login/component/text_field.dart';
+import 'package:selibu/Screen/Navbar.dart';
 import 'package:selibu/Screen/SignUp/signup_screen.dart';
 import 'package:selibu/components/rounded_button.dart';
 import 'package:selibu/constants.dart';
@@ -50,7 +51,7 @@ class Body extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return HomeScreen();
+                  return NavBar();
                 })
               );
             },

@@ -18,7 +18,7 @@ class _BodyState extends State<Body> {
     return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/Vector_7.png"),
+            image: AssetImage("assets/Images/Vector_7.png"),
             fit: BoxFit.cover,
           )
         ),
@@ -61,7 +61,7 @@ class _BodyState extends State<Body> {
                     children: <Widget>[
                       CircleAvatar(
                         radius: 70.0,
-                        backgroundImage: AssetImage("assets/images/user.png"),
+                        backgroundImage: AssetImage("assets/Images/user.png"),
                         backgroundColor: Colors.white,
                       ),
                       Positioned(

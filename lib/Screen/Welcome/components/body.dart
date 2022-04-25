@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: size.height * 0.03),
           Image.asset(
-            "assets/images/Buku.png",
+            "assets/Images/Buku.png",
             height: size.height * 0.25,
           ),
           SizedBox(height: size.height * 0.03),
