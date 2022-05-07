@@ -1,7 +1,12 @@
+import 'dart:io';
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // import 'package:selibu/Screen/EditProfile/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
 import 'package:selibu/components/rounded_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Body extends StatefulWidget {
   const Body({ Key? key }) : super(key: key);
@@ -12,7 +17,17 @@ class Body extends StatefulWidget {
 
 bool seePass = false;
 
-class _BodyState extends State<Body> { 
+class _BodyState extends State<Body> {
+  
+  File? _image;
+
+  Future pickImage(ImageSource source) async {
+    final image = await ImagePicker().pickImage(source: source);
+    if (image == null) return;
+    final imageTemp = File(image.path);
+    setState(() => this._image = imageTemp);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,17 +76,34 @@ class _BodyState extends State<Body> {
                     children: <Widget>[
                       CircleAvatar(
                         radius: 70.0,
-                        backgroundImage: AssetImage("assets/Images/user.png"),
+                        child: ClipOval(
+                          child: (_image != null)
+                          ? Image.file(_image!, width: 250, height: 250 ,fit: BoxFit.cover,)
+                          : Image.asset("assets/Images/user.png"),
+                        ),
                         backgroundColor: Colors.white,
                       ),
                       Positioned(
-                        bottom: 20,
+                        bottom: 0,
                         right: 10,
-                        child: Icon(
-                          Icons.image,
-                          color: Colors.black,
-                          size: 28,
-                        ),
+                        child: InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: ((Builder) => bottomSheet())
+                            );
+                          },
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Colors.white,
+                            child: Icon(
+                              Icons.camera_alt,
+                              color: Colors.black,
+                              size: 28,
+                            ),
+                          ),
+                        )
+                        // ),
                       )
                     ],
                   ),
@@ -160,4 +192,56 @@ class _BodyState extends State<Body> {
       )
     );
   }
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Pilih Profile Photo",
+            style: TextStyle(
+              fontFamily: "Made-Tommy",
+              fontWeight: FontWeight.w500,
+              fontSize: 24
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextButton.icon(
+                icon: Icon(Icons.camera),
+                onPressed: () => pickImage(ImageSource.camera),
+                style: TextButton.styleFrom(
+                  primary: Colors.black
+                ),
+                label: Text("Kamera"),
+              ),
+              TextButton.icon(
+                icon: Icon(Icons.image),
+                onPressed: () => pickImage(ImageSource.gallery),
+                style: TextButton.styleFrom(
+                  primary: Colors.black
+                ),
+                label: Text("Galeri"),
+              )
+            ],
+          )
+        ],
+      )
+    );
+  }
+  // void takePhoto(ImageSource source) async {
+  //   final pickedFile = await _picker.pickImage(source: source);
+  //   setState(() {
+  //     _imageFile = pickedFile;
+  //   });
+  // }
 }
