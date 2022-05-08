@@ -4,21 +4,19 @@ class Books {
   String Judul;
   String Kategori;
   String Image;
-  String Status;
-  String Kurir;
   String Tanggal;
-  int Jumlah;
-  int Harga;
+  String Status;
+  int SisaHari;
+  int Denda;
 
   Books(
       {required this.Judul,
       required this.Kategori,
       required this.Image,
-      required this.Jumlah,
+      required this.Denda,
+      required this.SisaHari,
       required this.Status,
-      required this.Kurir,
-      required this.Tanggal,
-      required this.Harga});
+      required this.Tanggal});
 }
 
 List<Books> booksList = [
@@ -26,18 +24,16 @@ List<Books> booksList = [
       Judul: "SagaraS",
       Kategori: "Pembelian",
       Image: "assets/Images/SagaraS.jpg",
-      Harga: 71000,
-      Jumlah: 1,
+      Denda: 0,
       Tanggal: "5 Mei 2022",
-      Status: "Dalam Pengiriman",
-      Kurir: "Winarto"),
+      Status: "Telah Mengembalikan",
+      SisaHari: 0),
   Books(
       Judul: "Lupa Jadi Manusia",
       Kategori: "Pembelian",
       Image: "assets/Images/Lupa Jadi Manusia.jpg",
-      Harga: 80000,
-      Jumlah: 2,
+      Denda: 0,
       Tanggal: "6 Mei 2022",
-      Status: "Pembelian Selesai",
-      Kurir: "Winarto")
+      Status: "Telah Mengembalikan",
+      SisaHari: 0)
 ];
