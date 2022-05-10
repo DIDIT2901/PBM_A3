@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selibu/Screen/EditProfile/EditProfile.dart';
 import 'package:selibu/Screen/Home/home.dart';
 import 'package:selibu/Screen/ListBuku/ListBuku.dart';
-import 'package:selibu/Screen/SwitchAcc/SwitchAcc.dart';
+import 'package:selibu/Screen/ListSewa/ListSewa.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({ Key? key }) : super(key: key);
@@ -16,7 +16,7 @@ class _NavBarState extends State<NavBar> {
   final pages = [
     HomeScreen(),
     ListBuku(),
-    SwitchAcc(),
+    ListSewa(),
     EditProfile(),
   ];
 
@@ -43,19 +43,19 @@ class _NavBarState extends State<NavBar> {
           destinations: [
             NavigationDestination(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'Beranda',
             ),
             NavigationDestination(
-              icon: Icon(Icons.list),
-              label: 'List',
+              icon: Icon(Icons.payments),
+              label: 'Daftar Beli',
             ),
             NavigationDestination(
-              icon: Icon(Icons.switch_account),
-              label: 'Switch',
+              icon: Icon(Icons.note),
+              label: 'Daftar Sewa',
             ),
             NavigationDestination(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Akun',
             )
           ],
         )
