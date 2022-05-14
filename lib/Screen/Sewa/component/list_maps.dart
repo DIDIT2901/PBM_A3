@@ -13,51 +13,73 @@ class _listMapsState extends State<listMaps> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          toolbarHeight: 20,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
-        body: Container(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-          child: Column(
-            children: [
+          centerTitle: false,
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: const [
               Text(
                 "Pustaka Karya",
-                style: TextStyle(
+                  style: TextStyle(
                     fontFamily: "Made-Tommy",
                     fontWeight: FontWeight.w700,
-                    fontSize: 36),
+                    fontSize: 30,
+                    color: Colors.black
+                    ),
               ),
               Text(
-                "Nih lokasi tokonya",
+                "Nih lokasi tokonya!",
                 style: TextStyle(
                     fontFamily: "Made-Tommy",
                     fontWeight: FontWeight.w400,
-                    fontSize: 20),
-              ),
-              Positioned(
-                  left: 20,
-                  top: 15,
-                  bottom: 15,
-                  child: Icon(CupertinoIcons.person_fill)),
-              Row(
-                children: <Widget>[
-                  FlutterMap(
-                      options: MapOptions(
-                          center: LatLng(-8.1738588, 113.6973692), zoom: 14.0),
-                      layers: [
-                        TileLayerOptions(
-                            urlTemplate:
-                                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                            subdomains: ['a'])
-                      ]),
-                ],
+                    fontSize: 20,
+                    color: Colors.black
+                    ),
               ),
             ],
           ),
+          toolbarHeight: 120,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
         ),
+        body: FlutterMap(
+          options: MapOptions(
+            center: LatLng(-8.1738588, 113.6973692), zoom: 14.0),
+          layers: [
+            TileLayerOptions(
+              urlTemplate:
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              subdomains: ['a']),
+          ],
+          children: [
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: const EdgeInsets.all(5),
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Kembali",
+                        style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            color: Colors.black
+                            ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+          ),
       ),
     );
   }

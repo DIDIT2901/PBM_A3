@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:selibu/Screen/Sewa/component/list_maps.dart';
 import 'package:selibu/Screen/Sewa/component/list_sewa.dart';
 
 class Body extends StatefulWidget {
@@ -101,92 +102,108 @@ class _BodyState extends State<Body> {
                           Stores store = storeList[index];
                           return Stack(
                             children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                                height: 170,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(5),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.10),
-                                          blurRadius: 20)
-                                    ]),
-                                child: Padding(
-                                    padding:
-                                        EdgeInsets.fromLTRB(180, 10, 20, 0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          store.nama,
-                                          style: TextStyle(
-                                              fontFamily: "Made-Tommy",
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20),
-                                        ),
-                                        // SizedBox(height: 10),
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(Icons.home),
-                                            Text(store.tempat,
-                                                style: TextStyle(
-                                                  fontFamily: "Made-Tommy",
-                                                  fontWeight: FontWeight.w400,
-                                                )),
-                                          ],
-                                        ),
-
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(Icons.add_road_outlined),
-                                            Text(store.jarak,
-                                                style: TextStyle(
-                                                  fontFamily: "Made-Tommy",
-                                                  fontWeight: FontWeight.w400,
-                                                )),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(Icons.timer),
-                                            Text(store.waktu,
-                                                style: TextStyle(
-                                                  fontFamily: "Made-Tommy",
-                                                  fontWeight: FontWeight.w400,
-                                                )),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(Icons.phone),
-                                            Text(store.telepon,
-                                                style: TextStyle(
-                                                  fontFamily: "Made-Tommy",
-                                                  fontWeight: FontWeight.w400,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    )),
+                              InkWell(
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                  height: 170,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(5),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black.withOpacity(0.10),
+                                            blurRadius: 20)
+                                      ]),
+                                  child: Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(120, 0, 20, 0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            store.nama,
+                                            style: TextStyle(
+                                                fontFamily: "Made-Tommy",
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18),
+                                          ),
+                                          // SizedBox(height: 10),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.home),
+                                              Text(store.tempat,
+                                                  style: TextStyle(
+                                                    fontFamily: "Made-Tommy",
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12
+                                                  )),
+                                            ],
+                                          ),
+                              
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.add_road),
+                                              Text(store.jarak,
+                                                  style: TextStyle(
+                                                    fontFamily: "Made-Tommy",
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.timer),
+                                              Text(store.waktu,
+                                                  style: TextStyle(
+                                                    fontFamily: "Made-Tommy",
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.phone),
+                                              Text(store.telepon,
+                                                  style: TextStyle(
+                                                    fontFamily: "Made-Tommy",
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12
+                                                  )),
+                                            ],
+                                          ),
+                                        ],
+                                      )),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return listMaps();
+                                      },
+                                    ),
+                                  );
+                                },
                               ),
-                              Positioned(
-                                  right: 20,
-                                  top: 15,
-                                  bottom: 20,
-                                  child: Icon(Icons.check_box_outline_blank)),
+                              // Positioned(
+                              //     right: 20,
+                              //     top: 15,
+                              //     bottom: 20,
+                              //     child: Icon(Icons.check_box_outline_blank)),
                               Positioned(
                                 left: 20,
                                 top: 15,
                                 bottom: 15,
                                 child: ClipRRect(
                                   child: Image(
-                                    width: 150,
-                                    height: 150,
+                                    width: 100,
+                                    height: 100,
                                     image: AssetImage(store.image),
                                   ),
                                 ),
