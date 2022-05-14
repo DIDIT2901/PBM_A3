@@ -117,7 +117,7 @@ class _BeliBuku extends State<Body> {
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
-                          SizedBox(height: 50),
+                          SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
