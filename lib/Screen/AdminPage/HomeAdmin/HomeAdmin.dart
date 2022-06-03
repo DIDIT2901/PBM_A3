@@ -1,39 +1,28 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:selibu/Screen/Home/component/background.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:selibu/Data/Buku.dart';
+import 'package:selibu/Screen/BeliBuku/beli_buku.dart';
+import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Screen/Sewa/sewa.dart';
 
-import '../../BeliBuku/beli_buku.dart';
+import '../../Home/component/body.dart';
 
-class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+class HomeAdmin extends StatefulWidget {
+  const HomeAdmin({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<HomeAdmin> createState() => _HomeAdminState();
 }
 
-onSearch(String search) {
-  print("Search");
-}
-
-class _BodyState extends State<Body> {
+class _HomeAdminState extends State<HomeAdmin> {
 
   final TextEditingController _searchController = TextEditingController();
   String? _homeUsername;
 
+  
   @override
   Widget build(BuildContext context) {
-
-    User? user = FirebaseAuth.instance.currentUser;
-
-    // FirebaseFirestore.instance.collection('Users').doc(user?.uid).get()
-    // .then((value) {
-    //   _homeUsername = value.data() String;
-    // });
-
-    Size size = MediaQuery.of(context).size;
     return Background(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -46,7 +35,7 @@ class _BodyState extends State<Body> {
               Container(
                 padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
                 child: Text(
-                  "Halo, " + _homeUsername.toString(),
+                  "Halo, Admin",
                   style: TextStyle(
                       fontFamily: "Made-Tommy",
                       fontWeight: FontWeight.w700,

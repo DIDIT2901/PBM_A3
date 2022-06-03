@@ -100,12 +100,12 @@ class _BodyState extends State<Body> {
                 controller: _emailController,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Email cannot be empty";
+                    return "Email tidak bisa kosong";
                   }
                   if (!RegExp(
                           "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
                       .hasMatch(value)) {
-                    return ("Please enter a valid email");
+                    return ("Masukkan email yang valid");
                   } else {
                     return null;
                   }
@@ -142,10 +142,10 @@ class _BodyState extends State<Body> {
                 validator: (value) {
                   RegExp regex = RegExp(r'^.{6,}$');
                     if (value!.isEmpty) {
-                      return "Password cannot be empty";
+                      return "Password tidak bisa kosong";
                     }
                     if (!regex.hasMatch(value)) {
-                      return ("please enter valid password min. 6 character");
+                      return ("Password min. 6 karakter");
                     } else {
                       return null;
                     }
@@ -181,6 +181,29 @@ class _BodyState extends State<Body> {
                   FormState.save();
                   try{
                     UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+                    await showDialog(context: context, builder: (context) =>AlertDialog(
+                        title: const Text(
+                          "Telah Berhasil Login",
+                          style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28
+                          ),
+                        ),
+                        content: const Text(
+                          "Selamat Datang!",
+                          style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16
+                          ),
+                        ),
+                        actions: [TextButton(onPressed: () {
+                          Navigator.of(context).pop();
+                        },child: Text('OK'),)],
+                      ));
+                      Navigator.of(context).pop();
+                      
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
