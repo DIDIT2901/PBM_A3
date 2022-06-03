@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:selibu/Screen/Login/component/body.dart';
 import 'package:selibu/Screen/Welcome/components/background.dart';
 import 'package:selibu/constants.dart';
 import 'package:selibu/components/rounded_button.dart';
@@ -12,7 +13,7 @@ class Body extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
+          const Text(
             "Selibu Disini!",
             style: TextStyle(
                 fontFamily: "Made-Tommy",
@@ -20,8 +21,9 @@ class Body extends StatelessWidget {
                 fontSize: 32),
           ),
           SizedBox(height: size.height * 0.03),
-          Text(
+          const Text(
             "Kenalan dulu yuk, sama aplikasi selibu",
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontFamily: "Made-Tommy",
                 fontWeight: FontWeight.w400,
@@ -33,7 +35,7 @@ class Body extends StatelessWidget {
             height: size.height * 0.25,
           ),
           SizedBox(height: size.height * 0.03),
-          Text(
+          const Text(
             "Jadi, di aplikasi Selibu ini, kamu bisa menyewa dan membeli buku loh! Yuk cari tau sekarang mengenai aplikasi Selibu",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -48,7 +50,7 @@ class Body extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return login();
+                    return const LoginConfirm();
                   },
                 ),
               );

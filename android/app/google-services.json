@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "917730150802",
+    "project_id": "selibu-5852e",
+    "storage_bucket": "selibu-5852e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917730150802:android:26c8158489388bee8cd94b",
+        "android_client_info": {
+          "package_name": "com.example.contoh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917730150802-hj95vjmvjpsdgk7jphqmlp6coqb69efa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmV_-S96WtCq92rU4bw5Kim8dSfLI1kcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917730150802-hj95vjmvjpsdgk7jphqmlp6coqb69efa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

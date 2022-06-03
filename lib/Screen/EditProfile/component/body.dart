@@ -15,7 +15,7 @@ class Body extends StatefulWidget {
   State<Body> createState() => _BodyState();
 }
 
-bool seePass = false;
+bool seePass = true;
 
 class _BodyState extends State<Body> {
   
@@ -31,7 +31,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/Images/Vector_7.png"),
             fit: BoxFit.cover,
@@ -45,13 +45,13 @@ class _BodyState extends State<Body> {
           backgroundColor: Colors.transparent,
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
           child: ListView(
             // mainAxisAlignment: MainAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.start,
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 "Mau Edit Profile?",
                 style: TextStyle(
                   fontFamily: "Made-Tommy",
@@ -60,7 +60,7 @@ class _BodyState extends State<Body> {
                 ),
               ),
 
-              Text(
+              const Text(
                 "Bikin Profile Yang Keren Ya!",
                 style: TextStyle(
                   fontFamily: "Made-Tommy",
@@ -70,7 +70,7 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: Center(
                   child: Stack(
                     children: <Widget>[
@@ -93,7 +93,7 @@ class _BodyState extends State<Body> {
                               builder: ((Builder) => bottomSheet())
                             );
                           },
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 20,
                             backgroundColor: Colors.white,
                             child: Icon(
@@ -111,8 +111,8 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: TextField(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                child: const TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person, color: Colors.black, size: 24,),
                     hintText: "Kinoy",
@@ -122,8 +122,8 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: TextField(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                child: const TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.mail, color: Colors.black, size: 24,),
                     hintText: "enjoykinoy7@gmail.com",
@@ -133,15 +133,15 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: TextField(
                   obscureText: seePass,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock, color: Colors.black, size: 24,),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.black, size: 24,),
                     hintText: "**********",
                     labelText: "Password",
                     suffixIcon: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.visibility,
                     ),
                     onPressed: (){
@@ -155,8 +155,8 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: TextField(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                child: const TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.house, color: Colors.black, size: 24,),
                     hintText: "Perum Punden Ayem, Kec.SumberSari, Kota Jember",
@@ -166,9 +166,9 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30),
                 alignment: Alignment.center,
-                child: Text(
+                child: const Text(
                   "Hapus Akun",
                   style: TextStyle(
                     color: Color(0xFF838383),
@@ -180,7 +180,7 @@ class _BodyState extends State<Body> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: RoundedButton(
                   text: "Simpan",
                   press: () {},
@@ -196,13 +196,13 @@ class _BodyState extends State<Body> {
     return Container(
       height: 100.0,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20
       ),
       child: Column(
         children: <Widget>[
-          Text(
+          const Text(
             "Pilih Profile Photo",
             style: TextStyle(
               fontFamily: "Made-Tommy",
@@ -210,27 +210,27 @@ class _BodyState extends State<Body> {
               fontSize: 24
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextButton.icon(
-                icon: Icon(Icons.camera),
+                icon: const Icon(Icons.camera),
                 onPressed: () => pickImage(ImageSource.camera),
                 style: TextButton.styleFrom(
                   primary: Colors.black
                 ),
-                label: Text("Kamera"),
+                label: const Text("Kamera"),
               ),
               TextButton.icon(
-                icon: Icon(Icons.image),
+                icon: const Icon(Icons.image),
                 onPressed: () => pickImage(ImageSource.gallery),
                 style: TextButton.styleFrom(
                   primary: Colors.black
                 ),
-                label: Text("Galeri"),
+                label: const Text("Galeri"),
               )
             ],
           )
