@@ -176,6 +176,7 @@ class _BodyState extends State<Body> {
             RoundedButton(
               text: "LOGIN",
               press: () async{
+                const CircularProgressIndicator();
                 final FormState = _formKey.currentState;
                 if(FormState!.validate()){
                   FormState.save();
@@ -211,7 +212,28 @@ class _BodyState extends State<Body> {
                       })
                     );
                   }catch(e){
-                    print(e);
+                    showDialog(context: context, builder: (context) =>AlertDialog(
+                        title: const Text(
+                          "Gagal Login :(",
+                          style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28
+                          ),
+                        ),
+                        content: Text(
+                          e.toString(),
+                          style: const TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16
+                          ),
+                        ),
+                        actions: [TextButton(onPressed: () {
+                          Navigator.of(context).pop();
+                        },child: Text('OK'),)],
+                      ));
+                      Navigator.of(context).pop();
                   }
                 }
               },

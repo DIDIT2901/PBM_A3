@@ -128,9 +128,13 @@ class _BodyState extends State<Body> {
                 child: StreamBuilder<QuerySnapshot> (
                   stream: _HomeBook,
                   builder: (context, snapshot) {
-                    if (snapshot.hasError) return Text('Ada yang salah nih');
+                    if (snapshot.hasError) return const Text('Ada yang salah nih');
                     if (snapshot.connectionState == ConnectionState.waiting){
-                      return CircularProgressIndicator();
+                      return const SizedBox(
+                        child: CircularProgressIndicator(),
+                        height: 10,
+                        width: 10,
+                      );
                     } else {
                       return ListView.builder(
                         itemCount: snapshot.data!.docs.length,
