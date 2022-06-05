@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   String? Username;
   String? Alamat;
@@ -17,4 +19,10 @@ class UserModel {
       'Alamat': Alamat,
     };
   }
+
+  Map<String, dynamic> toJson() => {'Username': Username, 'Alamat': Alamat};
+
+  UserModel.fromSnapshot(snapshot)
+    : Username = snapshot.data()['Username'],
+    Alamat = snapshot.data()['Alamat'];
 }
