@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
-import 'package:selibu/Data/StokBuku.dart';
+import 'package:selibu/Data/Buku.dart';
 import 'package:selibu/Screen/Sewa/sewa.dart';
 
 import '../../BeliBuku/beli_buku.dart';
