@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Sewa/component/list_maps.dart';
-import 'package:selibu/Screen/Sewa/component/list_sewa.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

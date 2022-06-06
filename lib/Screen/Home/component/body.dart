@@ -3,9 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:selibu/Model/HomeBookModel.dart';
 import 'package:selibu/Model/UserModel.dart';
+import 'package:selibu/Screen/BeliBuku/component/body.dart';
+import 'package:selibu/Screen/BuktiPembelian/component/body.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
 import 'package:selibu/Screen/Sewa/sewa.dart';
+import 'package:selibu/Screen/Welcome/components/body.dart';
 
 import '../../BeliBuku/beli_buku.dart';
 
@@ -44,7 +47,20 @@ class _BodyState extends State<Body> {
 
     final Stream<QuerySnapshot> _HomeBook = FirebaseFirestore.instance.collection('Buku').snapshots(); 
 
+    final List<BodyBeli> sendData; 
+
+    String _Deskripsi;
+    int _Halaman;
+    int _Harga;
+    String _Judul;
+    String _Penerbit;
+    String _Penulis;
+    int _Stok;
+    int _TahunTerbit;
+    String _Gambar;
+
     // getBookList();
+    List ListBeliBuku = [];
 
     Size size = MediaQuery.of(context).size;
     return Background(
@@ -62,7 +78,7 @@ class _BodyState extends State<Body> {
                   return Container(
                     padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
                     child: Text(
-                      "Halo, $_homeUsername",
+                      "Halo, $_homeUsername!",
                       style: const TextStyle(
                           fontFamily: "Made-Tommy",
                           fontWeight: FontWeight.w700,
@@ -247,7 +263,8 @@ class _BodyState extends State<Body> {
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
-                                                                BeliBuku()));
+                                                                BodyBeli(Deskripsi: snapshot.data!.docs[index]['Deskripsi'], Halaman: snapshot.data!.docs[index]['Halaman'], Harga: snapshot.data!.docs[index]['Harga'], Judul: snapshot.data!.docs[index]['Judul'], Penerbit: snapshot.data!.docs[index]['Penerbit'], Penulis: snapshot.data!.docs[index]['Penulis'], Stok: snapshot.data!.docs[index]['Stok'], TahunTerbit: snapshot.data!.docs[index]['TahunTerbit'], Gambar: snapshot.data!.docs[index]['Gambar'])
+                                                                ));
                                                   },
                                                 )
                                               ],

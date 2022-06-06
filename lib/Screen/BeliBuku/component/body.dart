@@ -1,31 +1,89 @@
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:selibu/Data/Buku.dart';
+import 'package:selibu/Model/TransaksiModel.dart';
 import 'package:selibu/Screen/BeliBuku/component/background.dart';
-import 'package:selibu/Screen/Home/home.dart';
 import 'package:selibu/Screen/Navbar.dart';
-import 'package:selibu/components/rounded_button.dart';
 
-class Body extends StatefulWidget {
+class BodyBeli extends StatefulWidget {
+
+  String Deskripsi;
+  int Halaman;
+  int Harga;
+  String Judul;
+  String Penerbit;
+  String Penulis;
+  int Stok;
+  int TahunTerbit;
+  String Gambar;
+
+  BodyBeli({
+    Key? key,
+    required this.Deskripsi, 
+    required this.Halaman, 
+    required this.Harga, 
+    required this.Judul, 
+    required this.Penerbit, 
+    required this.Penulis, 
+    required this.Stok, 
+    required this.TahunTerbit, 
+    required this.Gambar, 
+  }) : super(key: key);
+
   @override
-  _BeliBuku createState() => _BeliBuku();
+  _BeliBuku createState() => _BeliBuku(
+    Judul, Deskripsi, Penulis, Penerbit, TahunTerbit, Halaman, Stok, Gambar, Harga
+  );
 }
 
-class _BeliBuku extends State<Body> {
+class _BeliBuku extends State<BodyBeli> {
+
+  String? _Deskripsi;
+  int? _Halaman;
+  int? _Harga;
+  String? _Judul;
+  String? _Penerbit;
+  String? _Penulis;
+  int? _Stok;
+  int? _TahunTerbit;
+  String? _Gambar;
+  DateTime? _Tanggal;
+
+  _BeliBuku(this._Judul, this._Deskripsi, this._Penulis, this._Penerbit, this._TahunTerbit, this._Halaman, this._Stok, this._Gambar, this._Harga);
+
   int numOfItems = 1;
+
+  int _Count = 1;
+  void _PlusCount() {
+    _Stok;
+    setState(() {
+      if (_Count <= _Stok!) _Count++;
+    });
+  }
+
+  void _MinCount(){
+    setState(() {
+      if (_Count > 1) _Count--;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
+    int Total;
+    // _Deskripsi;
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   "Yuk, Cek Bukunya!",
                   style: TextStyle(
                       fontFamily: "Made-Tommy",
@@ -33,8 +91,8 @@ class _BeliBuku extends State<Body> {
                       fontSize: 28),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                  child: Text(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 60, 0),
+                  child: const Text(
                     "Pastiin buku yang kamu pilih udah benar ya!",
                     style: TextStyle(
                         fontFamily: "Made-Tommy",
@@ -43,7 +101,7 @@ class _BeliBuku extends State<Body> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 40, 20, 5),
+                  margin: const EdgeInsets.fromLTRB(20, 40, 20, 5),
                   child: Container(
                     height: 350,
                     decoration: BoxDecoration(
@@ -56,124 +114,135 @@ class _BeliBuku extends State<Body> {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "SagaraS",
-                            style: TextStyle(
+                            _Judul.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16),
                           ),
-                          SizedBox(height: 10),
-                          Image.asset(
-                            "assets/Images/SagaraS.jpg",
+                          const SizedBox(height: 10),
+                          Image.network(
+                            _Gambar.toString(),
                             height: 100,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
-                            "Akhirnya. Siapa orang tua Ali dijawab di buku ini. Ali, bertahun-tahun, berusaha memecahkan misteri itu. Raib dan Seli tentu tidak akan membiarkan Ali sendirian, mereka sahabat sejati. Dan...",
-                            style: TextStyle(
+                            _Deskripsi.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                             textAlign: TextAlign.justify,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
-                            "Penulis: Tere Liye",
-                            style: TextStyle(
+                            "Penulis: " + _Penulis.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
                           Text(
-                            "Penerbit: PT. Sabak Grip Nusantara",
-                            style: TextStyle(
+                            "Penerbit: " + _Penerbit.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
                           Text(
-                            "Tahun Terbit: 2022",
-                            style: TextStyle(
+                            "Tahun Terbit: " + _TahunTerbit.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
                           Text(
-                            "Jumlah Halaman: 384 Halaman",
-                            style: TextStyle(
+                            "Jumlah Halaman: " + _Halaman.toString() + " Halaman",
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
                           Text(
-                            "Stok Tersedia: 136",
-                            style: TextStyle(
+                            "Stok Tersedia: " + _Stok.toString(),
+                            style: const TextStyle(
                                 fontFamily: "Made-Tommy",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                child: Text(
+                                child: const Text(
                                   "Jumlah",
                                   style: TextStyle(
                                       fontFamily: "Made-Tommy",
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 12),
+                                      fontSize: 16),
                                 ),
                               ),
                               Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.black54,
-                                          )),
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.remove,
-                                          color: Colors.black54,
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      Container(
+                                        width: 25,
+                                        height: 25,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color: Colors.transparent,
+                                            )),
+                                        child: FloatingActionButton(
+                                          heroTag: 'Min',
+                                          child: const Icon(
+                                            Icons.remove,
+                                            color: Colors.white,
+                                          ),
+                                          backgroundColor: Color.fromARGB(255, 33, 33, 33),
+                                          elevation: 5,
+                                          onPressed: () {_MinCount();},
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      '1',
-                                      style: TextStyle(
-                                          fontFamily: "Made-Tommy",
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 12),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.black54,
-                                          )),
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.black54,
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        '$_Count',
+                                        style: const TextStyle(
+                                            fontFamily: "Made-Tommy",
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Container(
+                                        width: 25,
+                                        height: 25,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color: Colors.transparent,
+                                            )),
+                                        child: FloatingActionButton(
+                                          heroTag: 'Plus',
+                                          child: const Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          backgroundColor: Color.fromARGB(255, 33, 33, 33),
+                                          elevation: 5,
+                                          onPressed: () {_PlusCount();},
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               )
                             ],
@@ -183,36 +252,99 @@ class _BeliBuku extends State<Body> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 OutlinedButton(
-                  child: Text(
-                    "Bayar",
+                  child: const Text(
+                    "Beli",
                     style: TextStyle(
                       fontSize: 12,
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                      primary: Color.fromRGBO(252, 241, 241, 1),
+                      primary: const Color.fromRGBO(252, 241, 241, 1),
                       backgroundColor: Colors.black,
-                      side: BorderSide(color: Colors.black, width: 3),
-                      shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.black, width: 3),
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30))),
-                      minimumSize: Size(40, 45)),
-                  onPressed: () {},
+                      minimumSize: const Size(40, 45)),
+                  onPressed: () async {
+                    try {
+                      var _Pembeli;
+                      String? GambarBuku = _Gambar;
+                      User? user = FirebaseAuth.instance.currentUser;
+
+                      _Pembeli = user!.uid;
+                      _Tanggal = DateTime.now();
+                      Total = (_Harga! * _Count);
+                      
+                      TransaksiModel transaksiModel = TransaksiModel();
+
+                      transaksiModel.Buku = _Judul.toString();
+                      transaksiModel.Jumlah = _Count;
+                      transaksiModel.Pembeli = _Pembeli.toString();
+                      transaksiModel.Tanggal = _Tanggal;
+                      transaksiModel.Total = Total;
+                      transaksiModel.Gambar = GambarBuku;
+
+                      await FirebaseFirestore.instance.collection('Transaksi').doc().set({
+                        'Buku': _Judul,
+                        'Pembeli': _Pembeli,
+                        'Jumlah': _Count,
+                        'Status': 'Menunggu Konfirmasi',
+                        'Kategori': 'Pembelian',
+                        'Tanggal': _Tanggal,
+                        'Total': Total,
+                        'Gambar': GambarBuku
+                      });
+                      
+                      await showDialog(context: context, builder: (context) =>AlertDialog(
+                        title: const Text(
+                          "Pembelian Sukses!",
+                          style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28
+                          ),
+                        ),
+                        content: const Text(
+                          "Pembelianmu sudah disimpan!",
+                          style: TextStyle(
+                            fontFamily: "Made-Tommy",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16
+                          ),
+                        ),
+                        actions: [TextButton(onPressed: () {
+                          Navigator.of(context).pop();
+                        },child: Text('OK'),)],
+                      ));
+                      Navigator.of(context).pop();
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return const NavBar();
+                        })
+                      );
+
+                    } catch(e) {
+                      print(e);
+                    }
+                  },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 OutlinedButton(
-                  child: Text(
+                  child: const Text(
                     "Kembali",
                     style: TextStyle(fontSize: 12, color: Colors.black),
                   ),
                   style: OutlinedButton.styleFrom(
                       primary: Colors.black,
                       backgroundColor: Colors.white,
-                      side: BorderSide(color: Colors.black, width: 3),
-                      shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.black, width: 3),
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30))),
-                      minimumSize: Size(40, 45)),
+                      minimumSize: const Size(40, 45)),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -225,3 +357,4 @@ class _BeliBuku extends State<Body> {
     );
   }
 }
+

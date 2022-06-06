@@ -5,7 +5,7 @@ class HomeBookModel {
   String? Judul;
   String? Penerbit;
   String? Penulis;
-  String? TahunTerbit;
+  int? TahunTerbit;
   String? Gambar;
 
   Map<String, dynamic> toMap() {
