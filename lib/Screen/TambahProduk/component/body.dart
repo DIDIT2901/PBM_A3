@@ -102,21 +102,56 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "Rp. 0", labelText: "Stok Sewa"),
+                        hintText: "Judul Buku", labelText: "Judul"),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "Rp. 0", labelText: "Stok Beli"),
+                        hintText: "Teks", labelText: "Deskripsi"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "0", labelText: "Halaman"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "Rp. 0", labelText: "Harga"),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "Rp. 0", labelText: "Harga Buku"),
+                        hintText: "Nama Penerbit", labelText: "Penerbit"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Nama Penulis", labelText: "Penulis"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "0", labelText: "Tahun Terbit"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "0", labelText: "Stok"),
                   ),
                 ),
                 SizedBox(height: 60),
