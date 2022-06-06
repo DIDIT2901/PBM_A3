@@ -49,6 +49,13 @@ class _BodyState extends State<Body> {
     await FirebaseFirestore.instance.collection('Users').doc(user).update({'Username': _newUsername.text, 'Alamat': _newAlamat.text});
   }
 
+  Future DeleteUser() async{
+    final User = FirebaseAuth.instance.currentUser?.uid;
+    await FirebaseFirestore.instance.collection('Users').doc(user!.uid).delete();
+    await FirebaseAuth.instance.currentUser?.delete();
+    await FirebaseAuth.instance.signOut();
+  }
+
   Future pickImage(ImageSource source) async {
     final image = await ImagePicker().pickImage(source: source);
     if (image == null) return;
@@ -262,13 +269,55 @@ class _BodyState extends State<Body> {
                 Container(
                   padding: const EdgeInsets.only(top: 30),
                   alignment: Alignment.center,
-                  child: const Text(
-                    "Hapus Akun",
-                    style: TextStyle(
-                      color: Color(0xFF838383),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                      decoration: TextDecoration.underline
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context, 
+                        builder: (context) => AlertDialog(
+                          title: const Text(
+                            "Hapus Akun?",
+                              style: TextStyle(
+                                fontFamily: "Made-Tommy",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 36
+                              ),
+                          ),
+                          content: const Text(
+                            "Apakah Anda Yakin Untuk Hapus Akun? Seluruh Data Akun Akan Terhapus",
+                              style: TextStyle(
+                                fontFamily: "Made-Tommy",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16
+                              ),
+                          ),
+                          actions: [
+                            TextButton(onPressed: (() {
+                              Navigator.of(context).pop();
+                            }), child: const Text('Batal'),),
+                            TextButton(onPressed: (() {
+                              DeleteUser();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return const LoginConfirm();
+                                }));
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                content: Text('Akun Berhasil Dihapus', style: TextStyle(color: Colors.white),),
+                                backgroundColor: Colors.black,
+                              ));
+                            }), child: const Text('Hapus'),)
+                          ],
+                        )
+                      );
+                    },
+                    child: const Text(
+                      "Hapus Akun",
+                      style: TextStyle(
+                        color: Color(0xFF838383),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        decoration: TextDecoration.underline
+                      ),
                     ),
                   ),
                 ),
