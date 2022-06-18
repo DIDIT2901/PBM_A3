@@ -4,14 +4,14 @@ import 'package:selibu/Screen/EditProfile/EditProfile.dart';
 import 'package:selibu/Screen/ListBuku/ListBuku.dart';
 import 'package:selibu/Screen/ListSewa/ListSewa.dart';
 
-class NavBar extends StatefulWidget {
-  const NavBar({ Key? key }) : super(key: key);
+class NavBarAdmin extends StatefulWidget {
+  const NavBarAdmin({ Key? key }) : super(key: key);
 
   @override
-  State<NavBar> createState() => _NavBarState();
+  State<NavBarAdmin> createState() => _NavBarState();
 }
 
-class _NavBarState extends State<NavBar> {
+class _NavBarState extends State<NavBarAdmin> {
   int index = 0;
   final pages = [
     const HomeAdmin(),
