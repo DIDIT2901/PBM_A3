@@ -151,7 +151,28 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: TextField(
                     decoration:
-                        InputDecoration(hintText: "0", labelText: "Stok"),
+                        InputDecoration(hintText: "0", labelText: "Stok Sewa"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "0", labelText: "Stok Beli"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "0", labelText: "Terjual"),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  child: TextField(
+                    decoration:
+                        InputDecoration(hintText: "0", labelText: "Disewa"),
                   ),
                 ),
                 SizedBox(height: 60),
