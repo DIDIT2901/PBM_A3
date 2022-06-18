@@ -270,7 +270,7 @@ class _BodyState extends State<Body> {
                         await FirebaseFirestore.instance.collection('Users').doc(user!.uid).set({
                           'Username': _username,
                           'Alamat': _alamat,
-                          'Admin': false,
+                          'Role': 'User',
                         });
                       });
 

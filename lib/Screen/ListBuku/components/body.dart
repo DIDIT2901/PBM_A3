@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:intl/intl.dart';
+import 'package:selibu/Screen/Navbar.dart';
 
 import '../../AdminPage/NavbarAdmin/NavbarAdmin.dart';
 
@@ -27,7 +28,7 @@ Future getUsername() async{
   final user = FirebaseAuth.instance.currentUser?.uid;
   if (user != null) {
     await FirebaseFirestore.instance.collection('Users').doc(user).get().then((value) {
-      _homeUsername = (value.data()!['Gambar']);
+      _homeUsername = (value.data()!['Username']);
     });
   }
 }

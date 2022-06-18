@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Login/component/background.dart';
 import 'package:selibu/Screen/Navbar.dart';
 import 'package:selibu/Screen/SignUp/signup_screen.dart';
+import 'package:selibu/Screen/role.dart';
 import 'package:selibu/components/rounded_button.dart';
 
 bool seePass = true;
@@ -208,7 +209,7 @@ class _BodyState extends State<Body> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const NavBar();
+                        return const roleCheck();
                       })
                     );
                   }catch(e){
