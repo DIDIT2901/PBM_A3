@@ -7,6 +7,8 @@ class HomeBookModel {
   String? Penulis;
   int? TahunTerbit;
   String? Gambar;
+  int? Stok;
+  int? StokSewa;
 
   Map<String, dynamic> toMap() {
     return {
@@ -17,7 +19,9 @@ class HomeBookModel {
       'Penerbit': this.Penerbit,
       'Penulis': this.Penulis,
       'TahunTerbit': this.TahunTerbit,
-      'Gambar': this.Gambar
+      'Gambar': this.Gambar,
+      'Stok': Stok,
+      'StokSewa': this.StokSewa
     };
   }
 
@@ -28,5 +32,7 @@ class HomeBookModel {
   //   Judul = snapshot.data()['Judul'],
   //   Penerbit = snapshot.data()['Penerbit'],
   //   Penulis = snapshot.data()['Penulis'],
-  //   TahunTerbit = snapshot.data()['TahunTerbit'];
+  //   TahunTerbit = snapshot.data()['TahunTerbit'],
+  //   Gambar = snapshot.data()['Gambar'],
+  //   StokSewa = snapshot.data()['StokSewa'];
 }

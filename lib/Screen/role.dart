@@ -20,16 +20,15 @@ class _roleCheckState extends State<roleCheck> {
 
   var adminCheck;
 
-  getUsername() async {
+  getUsername() async{
     final user = FirebaseAuth.instance.currentUser?.uid;
-    print(user);
     if (user != null) {
       await FirebaseFirestore.instance.collection('Users').doc(user).get().then((value) {
-        setState(() {
-          adminCheck = (value.data()!['Role']);
-        });
+        if(mounted) {
+          this.adminCheck = (value.data()!['Role']);
+          // print(adminCheck);
+        }
       });
-      
     }
   }
 
@@ -39,15 +38,15 @@ class _roleCheckState extends State<roleCheck> {
       } if (adminCheck == 'User') {
         return const NavBar();
       } if (adminCheck == null) {
-        print('NULL TAI');
+        print('NULL');
         return NavBar();
       }
   }
 
-  void initState() {
-    super.initState();
-    getUsername();
-  }
+  // void initState() {
+  //   super.initState();
+  //   getUsername();
+  // }
 
   @override
   Widget build(BuildContext context) {

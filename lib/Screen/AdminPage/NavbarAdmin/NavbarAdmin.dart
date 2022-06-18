@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/AdminPage/HomeAdmin/HomeAdmin.dart';
 import 'package:selibu/Screen/EditProfile/EditProfile.dart';
+import 'package:selibu/Screen/Home/homeAdmin.dart';
 import 'package:selibu/Screen/ListBuku/ListBuku.dart';
 import 'package:selibu/Screen/ListSewa/ListSewa.dart';
+import 'package:selibu/Screen/TambahProduk/TambahProduk.dart';
 
 class NavBarAdmin extends StatefulWidget {
   const NavBarAdmin({ Key? key }) : super(key: key);
@@ -14,8 +16,8 @@ class NavBarAdmin extends StatefulWidget {
 class _NavBarState extends State<NavBarAdmin> {
   int index = 0;
   final pages = [
-    const HomeAdmin(),
-    const ListBuku(),
+    HomeScreenAdmin(),
+    TambahProduk(),
     const ListSewa(),
     EditProfile(),
   ];
@@ -46,12 +48,12 @@ class _NavBarState extends State<NavBarAdmin> {
               label: 'Beranda',
             ),
             NavigationDestination(
-              icon: Icon(Icons.payments),
-              label: 'Daftar Beli',
+              icon: Icon(Icons.my_library_add),
+              label: 'Tambah Buku',
             ),
             NavigationDestination(
               icon: Icon(Icons.note),
-              label: 'Daftar Sewa',
+              label: 'Transaksi',
             ),
             NavigationDestination(
               icon: Icon(Icons.person),

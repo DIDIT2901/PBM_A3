@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:selibu/Screen/Login/component/body.dart';
 import 'package:selibu/components/rounded_button.dart';
@@ -25,7 +26,7 @@ class _BodyState extends State<Body> {
   TextEditingController _newPassword = TextEditingController();
   TextEditingController _newAlamat = TextEditingController();
   late String _username, _email, _password, _alamat; 
-  var _oldUsername, _oldAlamat;
+  var _oldUsername, _oldAlamat, loadimage;
   late String _oldEmail, verifEmail, verifPass;
   
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -43,6 +44,31 @@ class _BodyState extends State<Body> {
         });
       }
     }
+  
+  Future uploadImage() async{
+    final user = FirebaseAuth.instance.currentUser?.uid;
+    final path = 'UserImage/$user.jpg';
+    final upimage = FirebaseStorage.instance.ref().child(path);
+    final process = await upimage.putFile(_image!);
+    final urlImage = await FirebaseStorage.instance.ref().child(path).getDownloadURL();
+    await FirebaseFirestore.instance.collection('Users').doc(user).update({'PP': urlImage});
+  }
+
+  Future loadImage() async{
+    final user = FirebaseAuth.instance.currentUser?.uid;
+    // final path = 'UserImage/$user.jpg';
+    // final pathNull;
+    // final loadimage = await FirebaseStorage.instance.ref().child(path).getDownloadURL();
+    try {
+      await FirebaseFirestore.instance.collection('Users').doc(user).get().then((value) {
+      setState(() {
+        this.loadimage = value.data()!['PP'];
+      });
+    });
+    } catch(e){
+      print(e);
+    }
+  }
 
   Future updateData() async{
     final user = FirebaseAuth.instance.currentUser?.uid;
@@ -51,6 +77,7 @@ class _BodyState extends State<Body> {
 
   Future DeleteUser() async{
     final User = FirebaseAuth.instance.currentUser?.uid;
+    await FirebaseStorage.instance.ref('UserImage/$User.jpg').delete();
     await FirebaseFirestore.instance.collection('Users').doc(user!.uid).delete();
     await FirebaseAuth.instance.currentUser?.delete();
     await FirebaseAuth.instance.signOut();
@@ -110,45 +137,50 @@ class _BodyState extends State<Body> {
                   ),
                 ),
           
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  child: Center(
-                    child: Stack(
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 70.0,
-                          child: ClipOval(
-                            child: (_image != null)
-                            ? Image.file(_image!, width: 250, height: 250 ,fit: BoxFit.cover,)
-                            : Image.asset("assets/Images/user.png"),
-                          ),
-                          backgroundColor: Colors.white,
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: ((Builder) => bottomSheet())
-                              );
-                            },
-                            child: const CircleAvatar(
-                              radius: 20,
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                Icons.camera_alt,
-                                color: Colors.black,
-                                size: 28,
-                              ),
+                FutureBuilder(
+                  future: loadImage(),
+                  builder: (context, Scaffold) {
+                    return Container(
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    child: Center(
+                      child: Stack(
+                        children: <Widget>[
+                          CircleAvatar(
+                            radius: 70.0,
+                            child: ClipOval(
+                              child: (loadimage != null)
+                              ? Image.network(loadimage, width: 250, height: 250 ,fit: BoxFit.cover,)
+                              : Image.asset("assets/Images/user.png"),
                             ),
+                            backgroundColor: Colors.white,
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 10,
+                            child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: ((Builder) => bottomSheet())
+                                );
+                              },
+                              child: const CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.black,
+                                  size: 28,
+                                ),
+                              ),
+                            )
+                            // ),
                           )
-                          // ),
-                        )
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  );
+                  },
                 ),
           
                 FutureBuilder(
@@ -334,6 +366,9 @@ class _BodyState extends State<Body> {
                           const CircularProgressIndicator();
                           updateData();
                           getUsername();
+                          if (_image != null) {
+                            uploadImage();
+                          }
                           await FirebaseAuth.instance.currentUser?.updateEmail(_email).then((value) {});
                           await FirebaseAuth.instance.currentUser?.updatePassword(_password).then((value) {});
                           FirebaseAuth.instance.signOut;
