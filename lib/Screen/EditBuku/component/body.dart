@@ -189,6 +189,7 @@ class _BodyState extends State<BodyBuku> {
                         }
                         },
                       onSaved: (value) => _Halaman = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: _Halaman.toString(), labelText: "Halaman"),
                     ),
@@ -204,6 +205,7 @@ class _BodyState extends State<BodyBuku> {
                         }
                         },
                       onSaved: (value) => _Harga = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: _Harga.toString(), labelText: "Harga"),
                     ),
@@ -249,6 +251,7 @@ class _BodyState extends State<BodyBuku> {
                         }
                         },
                       onSaved: (value) => _TahunTerbit = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: _TahunTerbit.toString(), labelText: "Tahun Terbit"),
                     ),
@@ -264,6 +267,7 @@ class _BodyState extends State<BodyBuku> {
                         }
                         },
                       onSaved: (value) => _Stok = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: _Stok.toString(), labelText: "Stok Beli"),
                     ),
@@ -279,6 +283,7 @@ class _BodyState extends State<BodyBuku> {
                         }
                         },
                       onSaved: (value) => _StokSewa = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: _StokSewa.toString(), labelText: "Stok Sewa"),
                     ),

@@ -230,8 +230,9 @@ class _BodyState extends State<Body> {
                                                     transaksiModel.Status = _UbahSatus;
 
                                                     String? user = FirebaseAuth.instance.currentUser?.uid;
+                                                    String? indexTransaksi = snapshot.data!.docs[index].id.toString();
 
-                                                    await FirebaseFirestore.instance.collection('Transaksi').doc(user).update({
+                                                    await FirebaseFirestore.instance.collection('Transaksi').doc(indexTransaksi).update({
                                                       'Status': _UbahSatus
                                                     });
                                                     await showDialog(context: context, builder: (context) =>AlertDialog(

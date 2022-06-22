@@ -56,9 +56,6 @@ class _BodyState extends State<Body> {
 
   Future loadImage() async{
     final user = FirebaseAuth.instance.currentUser?.uid;
-    // final path = 'UserImage/$user.jpg';
-    // final pathNull;
-    // final loadimage = await FirebaseStorage.instance.ref().child(path).getDownloadURL();
     try {
       await FirebaseFirestore.instance.collection('Users').doc(user).get().then((value) {
       setState(() {

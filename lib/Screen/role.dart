@@ -26,7 +26,6 @@ class _roleCheckState extends State<roleCheck> {
       await FirebaseFirestore.instance.collection('Users').doc(user).get().then((value) {
         if(mounted) {
           this.adminCheck = (value.data()!['Role']);
-          // print(adminCheck);
         }
       });
     }
@@ -38,7 +37,6 @@ class _roleCheckState extends State<roleCheck> {
       } if (adminCheck == 'User') {
         return const NavBar();
       } if (adminCheck == null) {
-        print('NULL');
         return NavBar();
       }
   }

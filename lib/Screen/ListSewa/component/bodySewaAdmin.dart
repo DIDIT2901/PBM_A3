@@ -1,15 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:selibu/Model/SewaModel.dart';
+import 'package:selibu/Screen/AdminPage/NavbarAdmin/NavbarAdmin.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
-import 'package:selibu/Data/ListSewa.dart';
 import 'package:intl/intl.dart';
+import 'package:selibu/Screen/ListSewa/component/addSewa.dart';
+import 'package:selibu/components/rounded_button.dart';
 
-class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+class BodySewaAdmin extends StatefulWidget {
+  const BodySewaAdmin({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<BodySewaAdmin> createState() => _BodyState();
 }
 
 onSearch(String search) {
@@ -26,9 +29,15 @@ Future getUsername() async{
       }
     }
 
-final Stream<QuerySnapshot> _HomeSewa = FirebaseFirestore.instance.collection('Sewa').snapshots();
+class _BodyState extends State<BodySewaAdmin> {
 
-class _BodyState extends State<Body> {
+  final Stream<QuerySnapshot> _HomeSewa = FirebaseFirestore.instance.collection('Sewa').snapshots();
+
+  @override
+  void initState(){
+    _HomeSewa;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -122,7 +131,6 @@ class _BodyState extends State<Body> {
                             itemBuilder: (context, int index) {
                               DateTime TanggalTr = (snapshot.data!.docs[index]['Tanggal']).toDate();
                               String FormattedTanggal = DateFormat('dd MMM yyyy  kk:mm').format(TanggalTr);
-
                               return Stack(
                                 children: <Widget>[
                                   Container(
@@ -151,6 +159,14 @@ class _BodyState extends State<Body> {
                                                 fontSize: 20),
                                           ),
                                           const SizedBox(height: 5),
+                                          Text(
+                                            "Peminjam : " + snapshot.data!.docs[index]['Peminjam'],
+                                            style: const TextStyle(
+                                                fontFamily: "Made-Tommy",
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 11),
+                                            textAlign: TextAlign.justify,
+                                          ),
                                           Text(
                                             "Katergori : " + snapshot.data!.docs[index]['Kategori'],
                                             style: const TextStyle(
@@ -191,7 +207,71 @@ class _BodyState extends State<Body> {
                                                 fontSize: 11),
                                             textAlign: TextAlign.justify,
                                           ),
-                                          const SizedBox(height: 10),
+                                          // const SizedBox(height: 10),
+                                          Container(
+                                              child: OutlinedButton(
+                                                child: const Text(
+                                                  "Selesai",
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.white),
+                                                ),
+                                                style: OutlinedButton.styleFrom(
+                                                    primary: const Color.fromRGBO(252, 241, 241, 1),
+                                                    backgroundColor: Colors.black,
+                                                    side: const BorderSide(color: Colors.black, width: 3),
+                                                    shape: const RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.all(Radius.circular(30))),
+                                                    minimumSize: const Size(30, 25)),
+                                                onPressed: () async {
+                                                  try{
+                                                    String _UbahSatus = 'Telah Mengembalikan';
+
+                                                    SewaModel sewaModel = SewaModel();
+                                                    sewaModel.Status = _UbahSatus;
+
+                                                    String? user = FirebaseAuth.instance.currentUser?.uid;
+                                                    String? indexTransaksi = snapshot.data!.docs[index].id.toString();
+
+                                                    await FirebaseFirestore.instance.collection('Sewa').doc(indexTransaksi).update({
+                                                      'Status': _UbahSatus
+                                                    });
+                                                    await showDialog(context: context, builder: (context) =>AlertDialog(
+                                                      title: const Text(
+                                                        "Transaksi Selesai",
+                                                        style: TextStyle(
+                                                          fontFamily: "Made-Tommy",
+                                                          fontWeight: FontWeight.w700,
+                                                          fontSize: 28
+                                                        ),
+                                                      ),
+                                                      content: const Text(
+                                                        "Terima Kasih Telah Membeli Produk Kami >//<",
+                                                        style: TextStyle(
+                                                          fontFamily: "Made-Tommy",
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 16
+                                                        ),
+                                                      ),
+                                                      actions: [TextButton(onPressed: () {
+                                                        Navigator.of(context).pop();
+                                                      },child: Text('OK'),)],
+                                                    ));
+                                                    Navigator.of(context).pop();
+
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(builder: (context) {
+                                                        return const NavBarAdmin();
+                                                      })
+                                                    );
+                                                  }catch(e){
+                                                    print(e);
+                                                  }
+                                                },
+                                              )
+                                            )
                                         ],
                                       ),
                                     ),
@@ -206,13 +286,27 @@ class _BodyState extends State<Body> {
                                         width: 90,
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               );
                             },
                           );
                         }
                       }
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    child: RoundedButton(
+                      text: "Tambah Data Sewa",
+                      press: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context){
+                            return const addSewa();
+                          })
+                        );
+                      },
                     ),
                   )
                 ],

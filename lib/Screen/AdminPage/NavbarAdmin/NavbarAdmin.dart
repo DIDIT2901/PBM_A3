@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:selibu/Screen/AdminPage/HomeAdmin/HomeAdmin.dart';
 import 'package:selibu/Screen/EditProfile/EditProfile.dart';
 import 'package:selibu/Screen/Home/homeAdmin.dart';
-import 'package:selibu/Screen/ListBuku/ListBuku.dart';
-import 'package:selibu/Screen/ListSewa/ListSewa.dart';
+import 'package:selibu/Screen/ListSewa/component/bodySewaAdmin.dart';
 import 'package:selibu/Screen/TambahProduk/TambahProduk.dart';
 
 class NavBarAdmin extends StatefulWidget {
@@ -18,7 +16,7 @@ class _NavBarState extends State<NavBarAdmin> {
   final pages = [
     HomeScreenAdmin(),
     TambahProduk(),
-    const ListSewa(),
+    const BodySewaAdmin(),
     EditProfile(),
   ];
 

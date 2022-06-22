@@ -9,6 +9,8 @@ class HomeBookModel {
   Int? JamTutup;
   Int? MenitBuka;
   Int? MenitTutup;
+  Double? langti;
+  Double? longti;
 
   Map<String, dynamic> toMap() {
     return {
@@ -19,7 +21,9 @@ class HomeBookModel {
       'JamBuka': this.JamBuka,
       'JamTutup': this.JamTutup,
       'MenitBuka': this.MenitBuka,
-      'MenitTutup': this.MenitTutup
+      'MenitTutup': this.MenitTutup,
+      'langti': this.langti,
+      'longti': this.longti
     };
   }
 }

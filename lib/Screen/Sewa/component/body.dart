@@ -36,7 +36,6 @@ class _BodyState extends State<Body> {
           body: Container(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -83,7 +82,6 @@ class _BodyState extends State<Body> {
                       hintText: "Cari...",
                       hintStyle:
                           const TextStyle(fontSize: 14, color: Color(0xFF838383)),
-                      // icon: Icon(Icons.qr_code)
                     ),
                   ),
                   decoration: BoxDecoration(boxShadow: [
@@ -204,7 +202,10 @@ class _BodyState extends State<Body> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return listMaps();
+                                        var langti_, longti_;
+                                        langti_ = snapshot.data?.docs[index]['langti'];
+                                        longti_ = snapshot.data?.docs[index]['longti'];
+                                        return listMaps(langti: langti_, longti: longti_, namaToko: snapshot.data?.docs[index]['Cabang'].toString(),);
                                       },
                                     ),
                                   );

@@ -177,6 +177,7 @@ class _BodyState extends State<Body> {
                         }
                         },
                       onSaved: (value) => Halaman_ = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                           hintText: "0", labelText: "Halaman"),
                     ),
@@ -193,6 +194,7 @@ class _BodyState extends State<Body> {
                         }
                         },
                       onSaved: (value) => Harga_ = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                           hintText: "Rp.", labelText: "Harga"),
                     ),
@@ -241,6 +243,7 @@ class _BodyState extends State<Body> {
                         }
                         },
                       onSaved: (value) => TahunTerbit_ = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                           hintText: "2022", labelText: "Tahun Terbit"),
                     ),
@@ -257,38 +260,11 @@ class _BodyState extends State<Body> {
                         }
                         },
                       onSaved: (value) => Stok_ = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                           hintText: "0", labelText: "Stok Beli"),
                     ),
                 ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                //   child: TextField(
-                //     decoration:
-                //         InputDecoration(hintText: "0", labelText: "Stok Sewa"),
-                //   ),
-                // ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                //   child: TextField(
-                //     decoration:
-                //         InputDecoration(hintText: "0", labelText: "Stok Beli"),
-                //   ),
-                // ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                //   child: TextField(
-                //     decoration:
-                //         InputDecoration(hintText: "0", labelText: "Terjual"),
-                //   ),
-                // ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                //   child: TextField(
-                //     decoration:
-                //         InputDecoration(hintText: "0", labelText: "Disewa"),
-                //   ),
-                //   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                     child: TextFormField(
@@ -301,6 +277,7 @@ class _BodyState extends State<Body> {
                         }
                         },
                       onSaved: (value) => StokSewa_ = int.parse(value!),
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                           hintText: "0", labelText: "Stok Sewa"),
                     ),
