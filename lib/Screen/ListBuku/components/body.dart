@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:selibu/Model/TransaksiModel.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:intl/intl.dart';
 import 'package:selibu/Screen/Navbar.dart';
@@ -224,7 +225,13 @@ class _BodyState extends State<Body> {
                                                 onPressed: () async {
                                                   try{
                                                     String _UbahSatus = 'Transaksi Selesai';
-                                                    await FirebaseFirestore.instance.collection('Transaksi').doc().update({
+
+                                                    TransaksiModel transaksiModel = TransaksiModel();
+                                                    transaksiModel.Status = _UbahSatus;
+
+                                                    String? user = FirebaseAuth.instance.currentUser?.uid;
+
+                                                    await FirebaseFirestore.instance.collection('Transaksi').doc(user).update({
                                                       'Status': _UbahSatus
                                                     });
                                                     await showDialog(context: context, builder: (context) =>AlertDialog(

@@ -4,11 +4,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:selibu/Model/UserModel.dart';
 import 'package:selibu/Screen/BeliBuku/component/body.dart';
+import 'package:selibu/Screen/EditBuku/EditBuku.dart';
 import 'package:selibu/Screen/Home/component/background.dart';
 import 'package:selibu/Data/Buku.dart';
 import 'package:selibu/Screen/Sewa/sewa.dart';
 
 import '../../BeliBuku/beli_buku.dart';
+import '../../EditBuku/component/body.dart';
 
 class BodyAdmin extends StatefulWidget {
   const BodyAdmin({Key? key}) : super(key: key);
@@ -48,7 +50,6 @@ class _BodyAdminState extends State<BodyAdmin> {
   DeleteBook(indexNomor) async{
     await FirebaseStorage.instance.ref('BookImage/${indexNomor + 1}.jpg').delete();
     await FirebaseFirestore.instance.collection('Buku').doc('${indexNomor + 1}').delete();
-    print(indexNomor);
     setState(() {});
   }
   
@@ -306,7 +307,7 @@ class _BodyAdminState extends State<BodyAdmin> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  BodyBeli(Deskripsi: snapshot.data!.docs[index]['Deskripsi'], Halaman: snapshot.data!.docs[index]['Halaman'], Harga: snapshot.data!.docs[index]['Harga'], Judul: snapshot.data!.docs[index]['Judul'], Penerbit: snapshot.data!.docs[index]['Penerbit'], Penulis: snapshot.data!.docs[index]['Penulis'], Stok: snapshot.data!.docs[index]['Stok'], TahunTerbit: snapshot.data!.docs[index]['TahunTerbit'], Gambar: snapshot.data!.docs[index]['Gambar'])
+                                                                  BodyBuku(Deskripsi: snapshot.data!.docs[index]['Deskripsi'], Halaman: snapshot.data!.docs[index]['Halaman'], Harga: snapshot.data!.docs[index]['Harga'], Judul: snapshot.data!.docs[index]['Judul'], Penerbit: snapshot.data!.docs[index]['Penerbit'], Penulis: snapshot.data!.docs[index]['Penulis'], Stok: snapshot.data!.docs[index]['Stok'], StokSewa: snapshot.data!.docs[index]['StokSewa'], TahunTerbit: snapshot.data!.docs[index]['TahunTerbit'], Gambar: snapshot.data!.docs[index]['Gambar'], indexDoc: index+1,)
                                                                   ));
                                                     },
                                                   )
